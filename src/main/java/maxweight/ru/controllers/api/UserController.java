@@ -1,7 +1,7 @@
 package maxweight.ru.controllers.api;
 
-import maxweight.ru.models.User;
 import maxweight.ru.repositories.UserRepository;
+import maxweight.ru.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
