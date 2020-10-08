@@ -13,7 +13,7 @@ public class UserController {
 
     @PostMapping(path = "/add")
     public User addUser(@RequestParam String name) {
-        User user = new User(name);
+        User user = new User();
         userRepository.save(user);
         return user;
     }
