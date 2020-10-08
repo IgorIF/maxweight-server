@@ -9,4 +9,13 @@ public class Exercise {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+    private String alias;
+
+    public Exercise() {
+    }
+
+    public Exercise(String name, String alias) {
+        this.name = name;
+        this.alias = alias;
+    }
 }

@@ -17,11 +17,9 @@ public class ExerciseSeeder extends DatabaseSeeder {
     @Override
     void seed() {
         Set<Exercise> exercises = new HashSet<>();
-        exercises.add(new Exercise());
-        exercises.add(new Exercise());
-        exercises.add(new Exercise());
-        exercises.add(new Exercise());
-        exercises.add(new Exercise());
+        exercises.add(new Exercise("Приседания", "squats"));
+        exercises.add(new Exercise("Жим лежа", "bench_press"));
+        exercises.add(new Exercise("Становая тяга", "deadlift"));
 
         exerciseRepository.saveAll(exercises);
     }
