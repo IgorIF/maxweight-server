@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "trainings")
 public class Training {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -13,4 +14,5 @@ public class Training {
     @ManyToOne
     @JoinColumn(name = "plan_id", nullable = false)
     private Plan plan;
+
 }
