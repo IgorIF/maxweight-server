@@ -1,13 +1,7 @@
 package maxweight.ru.seeds;
 
-import maxweight.ru.models.Exercise;
-import maxweight.ru.models.Plan;
-import maxweight.ru.models.Training;
-import maxweight.ru.models.User;
-import maxweight.ru.repositories.ExerciseRepository;
-import maxweight.ru.repositories.PlanRepository;
-import maxweight.ru.repositories.TrainingRepository;
-import maxweight.ru.repositories.UserRepository;
+import maxweight.ru.models.*;
+import maxweight.ru.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -30,6 +24,9 @@ public class DatabaseSeeder {
     @Autowired
     TrainingRepository trainingRepository;
 
+    @Autowired
+    PersonalExerciseRepository personalExerciseRepository;
+
 
     @EventListener
     public void seed(ContextRefreshedEvent event) {
@@ -37,6 +34,7 @@ public class DatabaseSeeder {
         seedUsers();
         seedPlans();
         seedTrainings();
+        seedPersonalExercises();
     }
 
     private void seedUsers() {
@@ -63,5 +61,11 @@ public class DatabaseSeeder {
         exercises.add(new Exercise("Жим лежа", "bench_press"));
         exercises.add(new Exercise("Становая тяга", "deadlift"));
         exerciseRepository.saveAll(exercises);
+    }
+
+    private void seedPersonalExercises() {
+        Set<PersonalExercise> exercises = new HashSet<>(1);
+        exercises.add(new PersonalExercise());
+        personalExerciseRepository.saveAll(exercises);
     }
 }

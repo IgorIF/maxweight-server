@@ -5,16 +5,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "exercises_personal")
-public class ExercisePersonal {
+public class PersonalExercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "training_id")
     Training training;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "exercise_id")
     Exercise exercise;
 
-    List<Approach> approaches;
+    //List<Approach> approaches;
 
     public class Approach {
         private long id;
