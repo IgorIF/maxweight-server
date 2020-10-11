@@ -16,7 +16,7 @@ public class Plan {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "plan")
+    @OneToMany(mappedBy = "plans")
     private Set<Training> trainings;
 
     public Plan() {

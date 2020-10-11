@@ -1,6 +1,7 @@
 package maxweight.ru.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "exercises")
@@ -11,6 +12,9 @@ public class Exercise {
     private long id;
     private String name;
     private String alias;
+
+    @OneToMany(mappedBy = "exercises")
+    private Set<PersonalExercise> personalExercise;
 
     public Exercise() {
     }

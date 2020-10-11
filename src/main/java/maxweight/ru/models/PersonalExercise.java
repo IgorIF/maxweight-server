@@ -10,12 +10,12 @@ public class PersonalExercise {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "training_id")
+    @ManyToOne
+    @JoinColumn(name = "training_id", nullable = false)
     Training training;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "exercise_id")
+    @ManyToOne
+    @JoinColumn(name = "exercise_id", nullable = false)
     Exercise exercise;
 
     //List<Approach> approaches;
@@ -26,4 +26,30 @@ public class PersonalExercise {
         private long repetition;
     }
 
+    public PersonalExercise() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Training getTraining() {
+        return training;
+    }
+
+    public void setTraining(Training training) {
+        this.training = training;
+    }
+
+    public Exercise getExercise() {
+        return exercise;
+    }
+
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
+    }
 }

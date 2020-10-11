@@ -26,4 +26,36 @@ public class Training {
         this.name = name;
         this.plan = plan;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
+    }
+
+    public List<PersonalExercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<PersonalExercise> exercises) {
+        this.exercises = exercises;
+    }
 }
