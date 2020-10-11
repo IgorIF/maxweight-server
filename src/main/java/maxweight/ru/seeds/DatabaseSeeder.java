@@ -7,7 +7,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -27,6 +29,9 @@ public class DatabaseSeeder {
     @Autowired
     PersonalExerciseRepository personalExerciseRepository;
 
+    @Autowired
+    ApproachRepository approachRepository;
+
 
     @EventListener
     public void seed(ContextRefreshedEvent event) {
@@ -34,7 +39,7 @@ public class DatabaseSeeder {
         seedUsers();
         seedPlans();
         seedTrainings();
-        seedPersonalExercises();
+        seedPersonalExercisesWithApproaches();
     }
 
     private void seedUsers() {
@@ -63,15 +68,23 @@ public class DatabaseSeeder {
         exerciseRepository.saveAll(exercises);
     }
 
-    private void seedPersonalExercises() {
+    private void seedPersonalExercisesWithApproaches() {
 
         User user = userRepository.findFirstByUsername("igarif");
         Plan plan = planRepository.findFirstByUser(user);
         Training training = trainingRepository.findFirstByPlan(plan);
         Exercise exercise = exerciseRepository.findFirstByAlias("squats");
 
+        PersonalExercise personalExercise = new PersonalExercise(training, exercise);
+
         Set<PersonalExercise> exercises = new HashSet<>(1);
-        exercises.add(new PersonalExercise(training, exercise));
+        exercises.add(personalExercise);
         personalExerciseRepository.saveAll(exercises);
+
+        List<PersonalExercise.Approach> approaches = new ArrayList<>(3);
+        approaches.add(personalExercise.new Approach(100, 6, personalExercise));
+        approaches.add(personalExercise.new Approach(95, 5, personalExercise));
+        approaches.add(personalExercise.new Approach(90, 3, personalExercise));
+        approachRepository.saveAll(approaches);
     }
 }
