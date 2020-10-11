@@ -4,19 +4,20 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "exercises_personal")
+@Table(name = "personal_exercises")
 public class PersonalExercise {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne
     @JoinColumn(name = "training_id", nullable = false)
-    Training training;
+    private Training training;
 
     @ManyToOne
     @JoinColumn(name = "exercise_id", nullable = false)
-    Exercise exercise;
+    private Exercise exercise;
 
     //List<Approach> approaches;
 
@@ -27,6 +28,11 @@ public class PersonalExercise {
     }
 
     public PersonalExercise() {
+    }
+
+    public PersonalExercise(Training training, Exercise exercise) {
+        this.training = training;
+        this.exercise = exercise;
     }
 
     public long getId() {

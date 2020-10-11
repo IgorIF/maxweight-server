@@ -1,5 +1,7 @@
 package maxweight.ru.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,9 +16,10 @@ public class Plan {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
-    @OneToMany(mappedBy = "plans")
+    @OneToMany(mappedBy = "plan")
     private Set<Training> trainings;
 
     public Plan() {

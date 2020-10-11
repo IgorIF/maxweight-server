@@ -10,10 +10,11 @@ public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
     private String alias;
 
-    @OneToMany(mappedBy = "exercises")
+    @OneToMany(mappedBy = "exercise")
     private Set<PersonalExercise> personalExercise;
 
     public Exercise() {

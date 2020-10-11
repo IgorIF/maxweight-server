@@ -64,8 +64,14 @@ public class DatabaseSeeder {
     }
 
     private void seedPersonalExercises() {
+
+        User user = userRepository.findFirstByUsername("igarif");
+        Plan plan = planRepository.findFirstByUser(user);
+        Training training = trainingRepository.findFirstByPlan(plan);
+        Exercise exercise = exerciseRepository.findFirstByAlias("squats");
+
         Set<PersonalExercise> exercises = new HashSet<>(1);
-        exercises.add(new PersonalExercise());
+        exercises.add(new PersonalExercise(training, exercise));
         personalExerciseRepository.saveAll(exercises);
     }
 }

@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PlanRepository extends JpaRepository<Plan, Long> {
     Plan findFirstByUser(User user);
+    Plan findFirstByName(String name);
 }
