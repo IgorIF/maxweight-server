@@ -21,4 +21,9 @@ public class Plan {
 
     public Plan() {
     }
+
+    public Plan(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
 }

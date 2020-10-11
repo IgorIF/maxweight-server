@@ -15,4 +15,11 @@ public class Training {
     @JoinColumn(name = "plan_id", nullable = false)
     private Plan plan;
 
+    public Training() {
+    }
+
+    public Training(String name, Plan plan) {
+        this.name = name;
+        this.plan = plan;
+    }
 }
